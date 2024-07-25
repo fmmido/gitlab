@@ -1,51 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="bcrypt.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyGitHub-Like Site</title>
+    <title>Elmontag Hub</title>
     <link rel="stylesheet" href="styles.css">
+  
+
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>MyGitHub-Like</h1>
+            <h1>Elmontag Hub</h1>
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Repositories</a>
-                <a href="#">Issues</a>
-                <a href="#">Pull Requests</a>
+                <a href="#" id="nav-home">Home</a>
+                <a href="#" id="nav-repos">Repositories</a>
+                <a href="#" id="nav-login">Login</a>
+                <a href="#" id="nav-signup">Sign Up</a>
+                <a href="#" id="nav-logout" style="display: none;">Logout</a>
             </nav>
         </div>
     </header>
 
     <main>
         <div class="container">
-            <section class="repo-list">
+            <!-- Repositories Section -->
+            <section class="repo-list hidden" id="repo-list">
                 <h2>Repositories</h2>
-                <ul>
-                    <li>
-                        <h3><a href="#">Repository 1</a></h3>
-                        <p>Description of repository 1.</p>
-                    </li>
-                    <li>
-                        <h3><a href="#">Repository 2</a></h3>
-                        <p>Description of repository 2.</p>
-                    </li>
+                <ul id="repos">
+                    <!-- Repositories will be loaded here by JavaScript -->
                 </ul>
+                <section class="add-repo">
+                    <h2>Add New Repository</h2>
+                    <form id="addRepoForm">
+                        <label for="name">Repository Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <br>
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" required></textarea>
+                        <br>
+                        <label for="owner">Owner:</label>
+                        <input type="text" id="owner" name="owner" required>
+                        <br>
+                        <button type="submit">Add Repository</button>
+                    </form>
+                </section>
             </section>
 
-            <section class="repo-details">
-                <h2>Repository Details</h2>
-                <p>Select a repository to view details.</p>
+            <!-- Sign Up Section -->
+            <section class="hidden" id="signup-section">
+                <h2>Sign Up</h2>
+                <form id="signupForm">
+                    <label for="signup-username">Username:</label>
+                    <input type="text" id="signup-username" name="username" required>
+                    <br>
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" name="password" required>
+                    <br>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </section>
+
+            <!-- Login Section -->
+            <section class="hidden" id="login-section">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <label for="login-username">Username:</label>
+                    <input type="text" id="login-username" name="username" required>
+                    <br>
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" required>
+                    <br>
+                    <button type="submit">Login</button>
+                </form>
             </section>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 MyGitHub-Like Site</p>
+            <p>&copy; 2024 <a href="http://www.elmontag.com" target="_blank">Elmontag Hub</a></p>
         </div>
     </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>

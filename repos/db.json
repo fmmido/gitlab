@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": "9453",
+      "username": "kemo2018",
+      "password": "123"
+    }
+  ],
+  "repositories": [
+    {
+      "id": "c044",
+      "name": "gifmake",
+      "description": "tyty",
+      "owner": "ty"
+    }
+  ]
+}

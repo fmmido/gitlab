@@ -1,15 +1,11 @@
 <?php
 // add_repo.php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $newRepo = [
-        "id" => time(), // Simple way to generate a unique ID
-        "name" => $_POST['name'],
-        "description" => $_POST['description'],
-        "owner" => $_POST['owner'],
-        "created_at" => date("Y-m-d")
-    ];
+// Get the raw POST data
+$postData = file_get_contents('php://input');
+$newRepo = json_decode($postData, true);
 
+if ($newRepo) {
     // Read the current repositories
     $reposFile = 'repos.json';
     if (file_exists($reposFile)) {
@@ -23,12 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $repos[] = $newRepo;
 
     // Save the updated repositories back to the JSON file
-    file_put_contents($reposFile, json_encode($repos));
-
-    // Redirect to a confirmation page or back to the form
-    header('Location: success.html');
+    if (file_put_contents($reposFile, json_encode($repos))) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Failed to save repository']);
+    }
 } else {
-    http_response_code(405);
-    echo json_encode(['error' => 'Invalid request method.']);
+    echo json_encode(['success' => false, 'error' => 'Invalid input']);
 }
 ?>
