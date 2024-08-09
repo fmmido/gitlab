@@ -17,6 +17,7 @@ if ($newRepo) {
     } else {
         $repos = [];
     }
+    
 
     // Add the new repository
     $repos[] = $newRepo;
