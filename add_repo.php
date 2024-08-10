@@ -7,7 +7,6 @@
 $postData = file_get_contents('php://input');
 $newRepo = json_decode($postData, true);
 
-
 if ($newRepo) {
     // Read the current repositories
     $reposFile = 'repos.json';
